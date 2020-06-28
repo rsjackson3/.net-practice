@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DatingApp.API.Data;
+using Microsoft.EntityFrameworkCore; 
 
 namespace DatingApp.API.Controllers
 {
@@ -20,9 +21,9 @@ namespace DatingApp.API.Controllers
         }
         // GET api/values
         [HttpGet]
-        public IActionResult GetValues() // IActionResult allows you to return an HTTP response 
+        public async Task<IActionResult> GetValues() // IActionResult allows you to return an HTTP response 
         {
-            var values = this.context.Values.ToList(); // using LINQ method syntax rather than query syntax 
+            var values = await this.context.Values.ToListAsync(); // using LINQ method syntax rather than query syntax 
 
             // returns an HttpStatusCode.OK response 
             return Ok(values); // parameter is the content value to format in the entity body
@@ -30,9 +31,9 @@ namespace DatingApp.API.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public IActionResult GetValue(int id)
+        public async Task<IActionResult> GetValue(int id)
         {
-            var value = this.context.Values.FirstOrDefault(x => x.Id == id); // Id in Values table equals request id
+            var value = await this.context.Values.FirstOrDefaultAsync(x => x.Id == id); // Id in Values table equals request id
             
             return Ok(value); 
         }
