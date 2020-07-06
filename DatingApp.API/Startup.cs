@@ -30,6 +30,7 @@ namespace DatingApp.API
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))); // registers context as a service in the IServiceCollection
             services.AddControllers();
             services.AddCors(); // enable cross origin resource sharing 
+            services.AddScoped<IAuthRepository, AuthRepository>(); // service created once per client request and disposed after request
         } // called by ASP.NET Core runtime when the app starts
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
