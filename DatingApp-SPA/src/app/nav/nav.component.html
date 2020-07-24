@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container">
     
     <a class="navbar-brand" href="#">Ticketing System</a>
@@ -6,7 +6,7 @@
   
     <ul *ngIf="loggedIn()" class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Matches </a>
+        <a class="nav-link" routerLink="/tickets">Tickets </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Lists</a>
