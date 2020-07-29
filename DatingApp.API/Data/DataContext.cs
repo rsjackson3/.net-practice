@@ -9,5 +9,6 @@ namespace DatingApp.API.Data
         public DbSet<Value> Values { get; set; } // Values is table name that gets created
         // DbContext represents Entity db context, which handles fetching, storing, and updating a Value instance in the database
         public DbSet<User> Users {get; set;} 
+        public DbSet<Photo> Photos {get; set;}
     }
 }
