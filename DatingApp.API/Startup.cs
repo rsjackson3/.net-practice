@@ -19,6 +19,7 @@ using System.Net;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using DatingApp.API.Helpers;
+using AutoMapper;
 
 namespace DatingApp.API
 {
@@ -35,9 +36,14 @@ namespace DatingApp.API
         public void ConfigureServices(IServiceCollection services) // IServiceCollection is an interface that specifies contract for a collection of service descriptors
         {
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))); // registers context as a service in the IServiceCollection
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(opt => {
+                opt.SerializerSettings.ReferenceLoopHandling = 
+                Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
             services.AddCors(); // enable cross origin resource sharing 
+            services.AddAutoMapper(typeof(TicketRepository).Assembly);
             services.AddScoped<IAuthRepository, AuthRepository>(); // service created once per client request and disposed after request
+            services.AddScoped<ITicketRepository, TicketRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options => {
                 options.TokenValidationParameters = new TokenValidationParameters
