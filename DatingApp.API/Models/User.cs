@@ -15,6 +15,7 @@ namespace DatingApp.API.Models
         public DateTime LastActive {get; set;}
         public string City {get; set;}
         public ICollection<Photo> Photos {get; set;} // use convention for relations between classes
+        public ICollection<Ticket> Tickets {get; set;}
 
     }
 }
