@@ -14,7 +14,7 @@ namespace DatingApp.API.Dtos
         public DateTime LastActive {get; set;}
         public string City {get; set;}
         public string PhotoUrl {get; set;}
-        public ICollection<Photo> Photos {get; set;}
+        public ICollection<PhotosForDetailedDto> Photos {get; set;}
         public ICollection<Ticket> Tickets {get; set;}
     }
 }
