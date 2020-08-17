@@ -23,7 +23,7 @@ export class NavComponent implements OnInit {
       next => this.alertify.success('logged in successfully'),
       err => this.alertify.error(err),
       () => {
-        this.router.navigate(['/tickets']);
+        this.router.navigate(['/lists']);
       }
     );
   }; 

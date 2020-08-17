@@ -14,6 +14,11 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { TicketListComponent } from './ticket-list/ticket-list.component';
 import { appRoutes } from './routes';
+import { AuthGuard } from './_guards/auth.guard';
+import { MemberListComponent } from './member-list/member-list.component';
+import { AlertifyService } from './_services/alertify.service';
+
+
 
 @NgModule({
    declarations: [
@@ -21,7 +26,8 @@ import { appRoutes } from './routes';
       NavComponent,
       RegisterComponent,
       HomeComponent,
-      TicketListComponent
+      TicketListComponent,
+      MemberListComponent
    ],
    imports: [
       BrowserModule,
@@ -33,7 +39,8 @@ import { appRoutes } from './routes';
    ],
    providers: [
       AuthService,
-      ErrorInterceptorProvider
+      ErrorInterceptorProvider,
+      AlertifyService
    ],
    bootstrap: [
       AppComponent
