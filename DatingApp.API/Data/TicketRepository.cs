@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DatingApp.API.Models;
@@ -23,7 +24,9 @@ namespace DatingApp.API.Data
 
         public async Task<User> GetUser(int id)
         {
-            var user = await _context.Users.Include(p => p.Photos).FirstOrDefaultAsync(u => u.Id == id);
+            var user = await _context.Users.Include(p => p.Photos).Include(t => t.Tickets).FirstOrDefaultAsync(u => u.Id == id);
+            //var user = await _context.Users.Include(p => p.Photos).FirstOrDefaultAsync(u => u.Id == id);
+            //user
             return user;
         }
 
@@ -36,6 +39,10 @@ namespace DatingApp.API.Data
         public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync() > 0;
+        }
+
+        public Task<IEnumerable<Ticket>> GetTickets(int id){
+            throw new NotImplementedException();
         }
     }
 }

@@ -15,19 +15,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { TicketListComponent } from './ticket-list/ticket-list.component';
 import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth.guard';
-import { MemberListComponent } from './member-list/member-list.component';
+import { MemberListComponent } from './members/member-list/member-list.component';
 import { AlertifyService } from './_services/alertify.service';
-
+import { MemberCardComponent } from './members/member-card/member-card.component'
+import { TicketAddComponent } from './ticket-add/ticket-add.component';
 
 
 @NgModule({
-   declarations: [
+   declarations: [	
       AppComponent,
       NavComponent,
       RegisterComponent,
       HomeComponent,
       TicketListComponent,
-      MemberListComponent
+      MemberListComponent,
+      MemberCardComponent,
+      TicketAddComponent
    ],
    imports: [
       BrowserModule,
